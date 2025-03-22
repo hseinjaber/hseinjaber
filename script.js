@@ -8,8 +8,17 @@ document.addEventListener('DOMContentLoaded', function() {
     const searchInput = document.getElementById('search-notes');
     const profilePhoto = document.querySelector('.profile-photo');
     
-    // Set profile photo - replace with your actual image path
-    profilePhoto.style.backgroundImage = "url('https://i.imgur.com/YourImageID.jpg')";
+    // Set profile photo - using the local image file with error handling
+    const profileImg = new Image();
+    profileImg.onload = function() {
+        profilePhoto.style.backgroundImage = "url('WhatsApp Image 2025-03-21 at 2.55.25 PM.jpeg')";
+    };
+    profileImg.onerror = function() {
+        // Fallback to a default image or show a placeholder
+        profilePhoto.style.backgroundImage = "url('https://via.placeholder.com/100')";
+        console.error("Could not load profile image. Using placeholder instead.");
+    };
+    profileImg.src = 'WhatsApp Image 2025-03-21 at 2.55.25 PM.jpeg';
     
     // Allow user to upload a profile photo
     profilePhoto.addEventListener('click', function() {
